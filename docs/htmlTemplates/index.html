@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/docs/pinkNeon/mainStyle.css" rel="stylesheet">
+    <title>GROUPIE-TRACKER</title>
+</head>
+<body>
+
+
+<div class="heading">
+  <h1><span>Groupie-</span>Tracker</h1>
+</div>
+
+
+<section class="filterSection">
+    <h3>Filters:</h3>
+    <form action="/">
+      <p>Select a creation date</p>
+      <p>~~~~[<span id="fromCDshow"></span>]~~~~~~~~~~~[<span id="toCDshow"></span>]~~~~</p>
+      <div class="slideContainer">
+      <div class="slideItem">
+      <input type="range" min="1957" max="2020" value="1957" class="slider" name="fromCD" id="fromCD">
+    </div>
+      <div class="slideItem">
+      <input type="range" min="1957" max="2020" value="2020" class="slider" name="toCD" id="toCD">
+    </div></div>
+
+    <p>Choose a number of members</p>
+    <p>[1]~~~[2]~~~[3]~~~[4]~~~[5]~~~[6]~~~[7]</p>
+    <div class="slideContainer">
+    <input type="checkbox" name="member" value="1">
+<input type="checkbox" name="member" value="2">
+<input type="checkbox" name="member" value="3">
+<input type="checkbox" name="member" value="4">
+<input type="checkbox" name="member" value="5">
+<input type="checkbox" name="member" value="6">
+<input type="checkbox" name="member" value="7">
+  </div>
+  <br>
+  <p>Period of Debut Album</p>
+  <p>~~~~~~[ from ]~~~~~~~~~~[ to ]~~~~~~</p>
+  <div class="slideContainer">
+<input type="date" name="fromFA" value="1957-01-01">
+<input type="date" name="toFA" value="2021-01-01">
+  </div>
+<p>City/country of concerts:</p>
+<div class="slideContainer">
+<input type="text" name="location" placeholder="Kazakhstan">
+</div>
+<br>
+<br>
+<div class="slideContainer">
+<input type="submit" value="Apply Filters">
+</div>
+
+  </form>
+  </section>
+  <script>
+    var fromCD = document.getElementById("fromCD");
+    var toCD = document.getElementById("toCD");
+    var fromCDshow = document.getElementById("fromCDshow");
+    var toCDshow = document.getElementById("toCDshow");
+    fromCDshow.innerHTML = fromCD.value;
+    toCDshow.innerHTML = toCD.value
+    fromCD.oninput = function() {
+      fromCDshow.innerHTML = this.value;
+    }
+    toCD.oninput = function() {
+      toCDshow.innerHTML = this.value;
+    }
+    </script>
+</section>
+
+
+
+
+<section class="mainSection">
+<div class="flexContainer">
+{{range .}}
+<div class="flexItem">
+<form action="/response" method="POST">
+<input type="image" src="{{.Image}}" class="imgBorder">
+<p><b>Name: </b>{{.Name}}</p>
+<p><b>Creation Date: </b>{{.CreationDate}}</p>
+  <p><b>First Album: </b>{{.FirstAlbum}}</p>
+  <input name="relURL" value="{{.Relation}}" type ="hidden">
+  <input name="name" value="{{.Name}}" type ="hidden">
+</div>
+</form>
+{{end}}
+</div>
+</section>
+
+
+</body>
+</html>

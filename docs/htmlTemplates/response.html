@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/docs/pinkNeon/responseStyle.css" rel="stylesheet">
+    <title>GROUPIE-TRACKER</title>
+</head>
+<body>
+<!-- <section class="goBack">
+  <form action="/" method="POST">
+  <input type="reset" value="go back">
+</form> -->
+</section>
+<div class="header">
+  <header>
+    <h1>{{.Name}}</h1>
+  </header>
+</div>
+<section class="bodySection">
+<section class="infoSection">
+<div class="info">
+<img src="{{.Image}}" class="imgBorder">
+<p><b>Name: </b>{{.Name}}</p>
+<p><b>Creation Date: </b>{{.CreationDate}}</p>
+<p><b>First Album: </b>{{.FirstAlbum}}</p>
+<p><b>Members:</b></p>
+<ul>
+  {{range .Members}}
+  <li>{{ . }}</li>
+  {{end}}
+</ul>
+</div>
+</section>
+<section class="concerts">
+  <div class="info">
+    <p><b>Concerts:</b></p>
+    <ol class="rounded">
+      {{range $key, $value := .Concerts}}
+      <li>{{$key}}
+        <ul class="rectangle">{{range $value}}
+          <li>{{.}}</li>
+          {{end}}
+        </ul>
+      </li>
+      {{end}}
+    </ol>
+  </div>
+</section>
+<section class="mapSection">
+  <div>Map Will Be Here Soon :)</div>
+ 
+</section>
+
+</section>
+</body>
+</html>
