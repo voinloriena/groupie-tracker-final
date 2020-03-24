@@ -53,3 +53,8 @@ img {
   height: auto;
   border-radius: 7rem;
 }
+
+#map {
+  width: 90%;
+  height: 90%;
+}

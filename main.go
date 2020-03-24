@@ -13,8 +13,8 @@ import (
 )
 
 type errorData struct {
-	num  int
-	text string
+	Num  int
+	Text string
 }
 
 type artistData struct {
@@ -101,14 +101,15 @@ func errorHandler(res http.ResponseWriter, req *http.Request, err int) {
 		return
 	}
 	res.WriteHeader(err)
-	errData := errorData{num: err}
+	errData := errorData{Num: err}
 	if err == 404 {
-		errData.text = "Page Not Found"
+		errData.Text = "Page Not Found"
 	} else if err == 400 {
-		errData.text = "Bad Request"
+		errData.Text = "Bad Request"
 	} else if err == 500 {
-		errData.text = "Internal Server Error"
+		errData.Text = "Internal Server Error"
 	}
+	fmt.Println(errData)
 	temp.Execute(res, errData)
 }
 

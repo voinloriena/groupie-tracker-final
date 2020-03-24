@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="/docs/pinkNeon/responseStyle.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=df323c0d-918a-4c60-83c5-f11c5f474775&lang=ru_RU" type="text/javascript">
+    </script>
+    <script src="/docs/scripts/mapbasics.js"></script>
     <title>GROUPIE-TRACKER</title>
 </head>
 <body>
@@ -36,21 +39,20 @@
 <section class="concerts">
   <div class="info">
     <p><b>Concerts:</b></p>
-    <ol class="rounded">
+    <ol>
       {{range $key, $value := .Concerts}}
-      <li>{{$key}}
-        <ul class="rectangle">{{range $value}}
-          <li>{{.}}</li>
+      <li class="placemark" id="placemark">{{$key}}
+        <!-- <ul>{{range $value}}
+          <li id="dates">{{.}}</li>
           {{end}}
-        </ul>
+        </ul> -->
       </li>
       {{end}}
     </ol>
   </div>
 </section>
 <section class="mapSection">
-  <div>Map Will Be Here Soon :)</div>
- 
+  <div id="map" style="width: 600px; height: 400px"></div>
 </section>
 
 </section>
