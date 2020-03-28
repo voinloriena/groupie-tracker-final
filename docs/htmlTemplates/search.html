@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="/docs/pinkNeon/searchStyle.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<h1><span>Filterable</span> Table</h1>
+<p>Type something in the input field to search the table for first names, last names or emails:</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Artist/Band name</th>
+    <th>Members</th>
+    <th>Concert locations</th>
+    <th>First album date</th>
+    <th>Creation date</th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+    {{range .}}
+    <tr>
+      <td>{{.ID}}</td>
+      <td>{{.Name}}</td>
+      <td>
+        <ul>
+          {{range .Members}}
+        <li>{{.}}</li>
+        {{end}}
+      </ul>
+    </td>
+    <td> <ul>
+      {{range $key , $value := .Concerts}}
+    <li>{{$key}}</li>
+    {{end}}
+  </ul></td>
+    <td>{{.CreationDate}}</td>
+    <td>{{.FirstAlbum}}</td>
+    </tr>
+    {{end}}
+  
+  </tbody>
+</table>
+  
+<p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+
+</body>
+</html>

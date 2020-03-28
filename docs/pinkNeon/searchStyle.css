@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+@import url('https://fonts.googleapis.com/css?family=Knewave');
+body {
+background-color: #111;
+font-family: 'Sniglet', 'Helvetica Neue', sans-serif;
+color: #AFFCF4;
+text-align: center;
+}
+h1 {
+  font-family: 'Sniglet', cursive;
+  color: #AFFCF4;
+  font-size: 3.1rem;
+  display: inline-block;
+  border: 1rem solid #FABBAA;
+  padding: 1.2rem 2.1rem 1.4rem;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 6px #BA051A, inset 0 0 40px rgba(186,5,26, 0.3), inset 0 0 100px rgba(186,5,26, 0.5), 0 0 6px #BA051A, 0 0 40px rgba(186,5,26, 0.3), 0 0 100px rgba(186,5,26, 0.5);
+  text-shadow: 0px 0px 5px #318BF7, 0px 0px 10px #318BF7, 0px 0px 10px #318BF7, 0px 0px 80px rgba(49,139,247, 0.6), 0px 0px 100px rgba(49,139,247, 0.9);
+  z-index: 1;
+  position: relative;
+}
+h3 {
+font-size:2rem;
+font-family: 'Knewave';
+color:#FABBAA;
+text-shadow:
+0 0 6px #BA051A,
+0 0 40px rgba(186,5,26, 0.3),
+0 0 100px rgba(186,5,26, 0.5);
+text-align: center;
+}
+h1 span {
+ color:#95d7d0;
+ text-shadow:0px 0px 5px #333;
+/*     animation: buzzing .4s infinite; */
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 0.2rem solid #FABBAA;
+    padding: 1.2rem 2.1rem 1.4rem;
+    border-radius: 2rem;
+    box-shadow: inset 0 0 6px #BA051A, inset 0 0 40px rgba(186,5,26, 0.3), inset 0 0 100px rgba(186,5,26, 0.5), 0 0 6px #BA051A, 0 0 40px rgba(186,5,26, 0.3), 0 0 100px rgba(186,5,26, 0.5);
+  }
+  th {
+    text-shadow: 0px 0px 5px #318BF7, 0px 0px 10px #318BF7, 0px 0px 10px #318BF7, 0px 0px 80px rgba(49,139,247, 0.6), 0px 0px 100px rgba(49,139,247, 0.9);
+    text-align: center;
+  }
+  td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  

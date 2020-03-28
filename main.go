@@ -47,22 +47,23 @@ func main() {
 		os.Exit(1)
 	}
 
-	http.HandleFunc("/", mainPageHandler)
-	http.HandleFunc("/response", resHandler)
+	http.HandleFunc("/", mainPage)
+	http.HandleFunc("/response", response)
+	http.HandleFunc("/search", search)
 
 	fmt.Println()
 	fmt.Println("Thanks, man (ಥ﹏ಥ) Now Server is listening to port #8080   ᕦ(ò_óˇ)ᕤ")
 	http.ListenAndServe(":8080", nil)
 }
 
-func mainPageHandler(res http.ResponseWriter, req *http.Request) {
+func mainPage(res http.ResponseWriter, req *http.Request) {
 	temp, er := template.ParseFiles("docs/htmlTemplates/index.html")
 	if er != nil {
-		errorHandler(res, req, http.StatusInternalServerError)
+		err(res, req, http.StatusInternalServerError)
 		return
 	}
 	if req.URL.Path != "/" {
-		errorHandler(res, req, http.StatusNotFound)
+		err(res, req, http.StatusNotFound)
 		return
 	}
 	f := filter(req)
@@ -75,12 +76,11 @@ func mainPageHandler(res http.ResponseWriter, req *http.Request) {
 	temp.Execute(res, result)
 }
 
-func resHandler(res http.ResponseWriter, req *http.Request) {
+func response(res http.ResponseWriter, req *http.Request) {
 	temp, er := template.ParseFiles("docs/htmlTemplates/response.html")
 	if er != nil {
-		fmt.Println("here")
 		log.Fatal(er)
-		errorHandler(res, req, http.StatusInternalServerError)
+		err(res, req, http.StatusInternalServerError)
 		return
 	}
 	name := req.FormValue("name")
@@ -94,7 +94,16 @@ func resHandler(res http.ResponseWriter, req *http.Request) {
 	return
 }
 
-func errorHandler(res http.ResponseWriter, req *http.Request, err int) {
+func search(res http.ResponseWriter, req *http.Request) {
+	temp, e1 := template.ParseFiles("docs/htmlTemplates/search.html")
+	if e1 != nil {
+		err(res, req, http.StatusInternalServerError)
+		return
+	}
+	temp.Execute(res, allData)
+}
+
+func err(res http.ResponseWriter, req *http.Request, err int) {
 	temp, er := template.ParseFiles("docs/htmlTemplates/error.html")
 	if er != nil {
 		log.Fatal(er)
