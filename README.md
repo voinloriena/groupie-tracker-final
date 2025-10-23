@@ -167,6 +167,8 @@ Endpoint: https://groupietrackers.herokuapp.com/api/artists
 GitHub: Astana17
 
 Проект: Groupie Tracker
+<img width="1881" height="895" alt="image" src="https://github.com/user-attachments/assets/e0c50258-96c2-48f1-be72-ec0d0c30d791" />
+
 
 📄 Лицензия
 Этот проект является учебным и создан в образовательных целях.
